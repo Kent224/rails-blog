@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <h1 class="display-4">Articles</h1>
+  <p class="lead">Our blog has <%= Article.public_count %> articles and counting!</p>
+
+  <ul class="list-group">
+    <% @articles.each do |article| %>
+      <% unless article.archived? %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= link_to article.title, article, class: "text-decoration-none" %>
+          <span class="badge bg-primary rounded-pill"><%= article.created_at.strftime("%Y-%m-%d") %></span>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <div class="mt-4">
+    <%= link_to "Creation page, be free", new_article_path, class: "btn btn-success" %>
+  </div>
+</div>

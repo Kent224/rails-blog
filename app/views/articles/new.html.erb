@@ -1,0 +1,18 @@
+<h1>New Article</h1>
+
+<%= render "form", article: @article %>
+
+<!-- Back to Home link -->
+<%= link_to '🏠 Back to Home', root_path %>
+
+<% if @article.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+    <% @article.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
